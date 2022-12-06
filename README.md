@@ -24,7 +24,7 @@ After you're finished please remove all the comments and instructions!
 
 <div align="center">
 
-  <img src="murple_logo.png" alt="logo" width="140"  height="auto" />
+  <img src="./src/imgs/murple_logo.png" alt="logo" width="140"  height="auto" />
   <br/>
 
   <h3><b>Microverse README Template</b></h3>
@@ -55,9 +55,9 @@ After you're finished please remove all the comments and instructions!
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [Awesome-book] <a name="about-project"></a>
+# 📖 [toDoList] <a name="about-project"></a>
 
-**[awesome-book]** is a website that allows you to create a collection of your favorites books.
+**[toDoList]** is a website that allows you to create a collection of your favorites books.
 
 ## 🛠 Built With <a name="built-with"></a>
 
