@@ -5,9 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webpack tutorial</title>
+    <script src="https://kit.fontawesome.com/7222a8b277.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>Hello webpack 2022!!!!!</h1>
-    <img src="./imgs/bg1.png" alt="bg1" width="500">
+  <div class="total">
+      <div class="title">
+        <h>Today's To DO</h>
+        <i class="fa-solid fa-arrows-rotate"></i>
+      </div>
+
+      <form class="add-book" id="add-book">
+          <input 
+            type="text"
+            class="newToDo" 
+            name="newToDo" 
+            id="newToDo" 
+            placeholder="Add to your list...">    
+          <button type="button" class="add_button"><i class="fa-solid fa-plus"></i></button>         
+      </form>
+  
+      <div class="addTask"></div>
+      <button type="button" class="remove_button">Clear all completed</button>
+  </div>
+
 </body>
+<script src="./index.js"></script>
 </html>
