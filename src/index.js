@@ -5,17 +5,11 @@ const addTask = document.querySelector('.addTask');
 const newDest = document.querySelector('.newToDo');
 const addBtn = document.querySelector('.add_button');
 const remBtn = document.querySelector('.remove_button');
-let task = [];
+const task = [];
 
-function addlist() {
-  task.push(newDest.value);
-}
-
-function showList() {
-  addTask.innerHTML = '';
+const showList = (array) => {
   // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < task.length; i++) {
-    const container = `
+  const container = `
     <div class ="squareT">
       <div class ="square">
         <ul class="toDo">
@@ -25,7 +19,7 @@ function showList() {
             class="checkbox" 
             name="checkbox" 
             id="checkbox" ></li>
-          <li class="task-description">${task[i]}</li>
+          <li class="task-description">${array.description}</li>
         </ul>
       </div>
 
@@ -35,19 +29,29 @@ function showList() {
     </div>
     </div>
       `;
-    addTask.innerHTML += container;
-  }
-}
+  return container;
+};
+
+const addlist = (array) => {
+  const taskN = {};
+  taskN.description = newDest.value;
+  taskN.completed = array;
+  taskN.index = task.length + 1;
+  const listItem = showList(taskN);
+  newDest.insertAdjacentHTML('beforeend', listItem);
+  task.push(taskN);
+  addTask.innerHTML += listItem;
+};
+
 function addBtnN() {
-  addlist();
-  showList();
+  // eslint-disable-next-line no-console
+  addlist(false);
 }
 function removeAll() {
-  task = {
-    description: [],
-    completed: [],
-  };
-  showList();
+  // eslint-disable-next-line no-const-assign
+  addTask.innerHTML = '';
+  // eslint-disable-next-line no-console
+  console.log(task);
 }
 
 remBtn.addEventListener('click', removeAll);
