@@ -24,7 +24,7 @@ After you're finished please remove all the comments and instructions!
 
 <div align="center">
 
-  <img src="./src/imgs/murple_logo.png" alt="logo" width="140"  height="auto" />
+  <img src="murple_logo.png" alt="logo" width="140"  height="auto" />
   <br/>
 
   <h3><b>Microverse README Template</b></h3>
@@ -106,7 +106,7 @@ Clone this repository to your desired folder:
 
 Install this project with:
 
-- get into to directory "awesome-book"
+- get into to directory "toDoList"
 - write: npm install
 
 ### Usage
