@@ -77,7 +77,7 @@ After you're finished please remove all the comments and instructions!
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-[You can see our live demo](https://m1rn4.github.io/toDoList/)
+[You can see our live demo](c)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -120,7 +120,7 @@ To run the project, execute the following command:
 
 You can deploy this project using:
 
-[Deploy](https://m1rn4.github.io/toDoList/)
+[Deploy](https://m1rn4.github.io/toDoList/src)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
