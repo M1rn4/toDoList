@@ -20,7 +20,7 @@ function showList() {
       <div class ="square">
         <ul class="toDo">
           <li>
-            <input 
+            <input                                                                          
             type="checkbox"
             class="checkbox" 
             name="checkbox" 
