@@ -5,7 +5,7 @@ const addTask = document.querySelector('.addTask');
 const newDest = document.querySelector('.newToDo');
 const addBtn = document.querySelector('.add_button');
 const remBtn = document.querySelector('.remove_button');
-let task = [];
+const task = [];
 
 const showList = (array) => {
   // eslint-disable-next-line no-plusplus
