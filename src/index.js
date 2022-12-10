@@ -5,7 +5,6 @@ const addTask = document.querySelector('.addTask');
 const newDest = document.querySelector('.newToDo');
 const addBtn = document.querySelector('.add_button');
 const remBtn = document.querySelector('.remove_button');
-const task = [];
 
 const showList = (array) => {
   // eslint-disable-next-line no-plusplus
@@ -19,88 +18,88 @@ const showList = (array) => {
             class="checkbox" 
             name="checkbox" 
             id="checkbox" ></li>
-          <li class="task-description" id="${array.index + 1}">${array.description}</li>
+            <input type="text" class="task-description" name="${array.description}" id="${array.index + 1}" value="${array.description}">
         </ul>
       </div>
 
     <div class="actions">
-      <i class="fa-solid fa-pen-to-square edit"></i>
+      <i class="fa-solid fa-pencil"></i>
+      <i class="fa-solid fa-floppy-disk edit"></i>
       <i class="fa-solid fa-trash-can del"></i>
     </div>
     </div>
       `;
   return container;
 };
-window.addEventListener('load', () => {
-  const tasks = JSON.parse(localStorage.getItem('tasks'));
-  // eslint-disable-next-line no-console
-  tasks.forEach((element) => {
-    const content = showList(element);
-    addTask.innerHTML += content;
-  });
-});
-const addlist = (array) => {
+
+const addNew = (array, low) => {
+  // eslint-disable-next-line no-const-assign
   const taskN = {};
   taskN.description = array;
   taskN.completed = false;
-  taskN.index = task.length + 1;
-  const listItem = showList(taskN);
-  newDest.insertAdjacentHTML('beforeend', listItem);
-  task.push(taskN);
-  localStorage.setItem('tasks', JSON.stringify(task));
-  const tasks = JSON.parse(localStorage.getItem('tasks'));
-  tasks.forEach((e) => {
-    addTask.innerHTML += showList(e);
-  });
+  taskN.index = low.length + 1;
+  low.push(taskN);
+  localStorage.setItem('tasks', JSON.stringify(low));
 };
-// eslint-disable-next-line no-unused-vars
+const addList = () => {
+  let tasks = JSON.parse(localStorage.getItem('tasks'));
+  if (tasks == null) {
+    localStorage.setItem('tasks', JSON.stringify([]));
+  }
+  tasks = JSON.parse(localStorage.getItem('tasks'));
+  addNew(newDest.value, tasks);
+};
+
 const deleteOne = (array) => {
   let taskName = array.children[0].children[0].children[1].id;
-  // eslint-disable-next-line no-const-assign
   taskName = parseInt(taskName, 10);
   const tasks = JSON.parse(localStorage.getItem('tasks'));
-  // eslint-disable-next-line no-const-assign, eqeqeq
-  const ele = tasks.findIndex((e) => e.index == taskName);
-  // eslint-disable-next-line no-console
+  const ele = tasks.findIndex((e) => e.index === taskName);
   tasks.splice(ele - 1, 1);
-  // eslint-disable-next-line no-console
   localStorage.setItem('tasks', JSON.stringify(tasks));
-  // eslint-disable-next-line no-console
+};
+const showALl = () => {
+  const tasks = JSON.parse(localStorage.getItem('tasks'));
   addTask.innerHTML = '';
   tasks.forEach((e) => {
-    // eslint-disable-next-line no-unused-expressions    
-    addTask.innerHTML += showList(e);
+    const listItem = showList(e);
+    addTask.insertAdjacentHTML('beforeend', listItem);
   });
-  console.log(tasks);
+};
+
+const editTask = (array) => {
+  const tasks = JSON.parse(localStorage.getItem('tasks'));
+  let taskItem = array.children[0].children[0].children[1].id;
+  taskItem = parseInt(taskItem, 10);
+  const ele = tasks.findIndex((e) => e.index + 1 === taskItem);
+  const taskName = document.getElementById(taskItem);
+  tasks[ele].description = taskName.value;
+  localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 
 function addBtnN() {
-  // eslint-disable-next-line no-console
-  addlist(newDest.value);
+  addList();
+  showALl();
   newDest.value = '';
 }
-function removeAll() {
-  // eslint-disable-next-line no-const-assign
-  addTask.innerHTML = '';
-  // eslint-disable-next-line no-console
-  console.log(task);
+function editTasks(array) {
+  editTask(array);
 }
-
+function removeAll() {
+  addTask.innerHTML = '';
+}
+window.addEventListener('load', () => {
+  showALl();
+});
 remBtn.addEventListener('click', removeAll);
 addBtn.addEventListener('click', addBtnN);
 addTask.addEventListener('click', (e) => {
   const task = e.target.parentElement.parentElement;
   if (e.target.classList.contains('del')) {
-    // eslint-disable-next-line no-console
     deleteOne(task, e.target);
+    showALl();
   }
-  // eslint-disable-next-line max-len
-  // // task will be edited when first the input field of task is updated and then edit icon is clicked
-  // if (e.target.classList.contains('edit')) {
-  //   editTask(task);
-  // }
-  // if (e.target.classList.contains('checkbox')) {
-  //   const tasks = JSON.parse(localStorage.getItem('tasks'));
-  //   updateTaskStatus(e.target, tasks);
-  // }
+  if (e.target.classList.contains('edit')) {
+    editTasks(task);
+  }
 });
