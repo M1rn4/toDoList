@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Crete+Round&family=Poppins&family=Roboto&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: rgb(250, 244, 244);
+}
+
+.total {
+  width: 60%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #ccc;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  padding: 15px;
+  border-bottom: 1px solid #ccc;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-book {
+  padding: 15px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-book input {
+  font-style: italic;
+  width: 80%;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+.newToDo {
+  width: 30vw;
+  height: 2rem;
+  border: transparent;
+}
+
+.add_button {
+  border: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.addTask {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.squareT {
+  display: flex;
+  flex-direction: row;
+  padding-left: 1rem;
+  padding-right: 2rem;
+  justify-content: space-between;
+}
+
+.square ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.square ul li {
+  list-style: none;
+  padding: 15px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.remove_button {
+  display: block;
+  margin-top: auto;
+  border: 1px solid #ccc;
+  padding: 15px 0;
+  color: rgb(138, 133, 133);
+  font-size: 1rem;
+}
+
+.task-description {
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.checkbox,
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
