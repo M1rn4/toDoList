@@ -1,59 +1,31 @@
 import './style.css';
 import './imgs/bg1.png';
+// eslint-disable-next-line import/named
+import {
+  addList, deleteOne, showALl, editTask, newDest, addTask,
+} from './new.js';
 
-const addTask = document.querySelector('.addTask');
-const newDest = document.querySelector('.newToDo');
 const addBtn = document.querySelector('.add_button');
-const remBtn = document.querySelector('.remove_button');
-const task = [];
-
-const showList = (array) => {
-  // eslint-disable-next-line no-plusplus
-  const container = `
-    <div class ="squareT">
-      <div class ="square">
-        <ul class="toDo">
-          <li>
-            <input                                                                          
-            type="checkbox"
-            class="checkbox" 
-            name="checkbox" 
-            id="checkbox" ></li>
-          <li class="task-description">${array.description}</li>
-        </ul>
-      </div>
-
-    <div class="actions">
-      <i class="fa-solid fa-pen-to-square edit"></i>
-      <i class="fa-solid fa-trash-can del"></i>
-    </div>
-    </div>
-      `;
-  return container;
-};
-
-const addlist = (array) => {
-  const taskN = {};
-  taskN.description = newDest.value;
-  taskN.completed = array;
-  taskN.index = task.length + 1;
-  const listItem = showList(taskN);
-  newDest.insertAdjacentHTML('beforeend', listItem);
-  task.push(taskN);
-  addTask.innerHTML += listItem;
-};
 
 function addBtnN() {
-  // eslint-disable-next-line no-console
-  addlist(false);
+  addList();
+  showALl();
+  newDest.value = '';
 }
-function removeAll() {
-  // eslint-disable-next-line no-const-assign
-  addTask.innerHTML = '';
-  // eslint-disable-next-line no-console
-  console.log(task);
+function editTasks(array) {
+  editTask(array);
 }
-
-remBtn.addEventListener('click', removeAll);
-
+window.addEventListener('load', () => {
+  showALl();
+});
 addBtn.addEventListener('click', addBtnN);
+addTask.addEventListener('click', (e) => {
+  const task = e.target.parentElement.parentElement;
+  if (e.target.classList.contains('del')) {
+    deleteOne(task, e.target);
+    showALl();
+  }
+  if (e.target.classList.contains('edit')) {
+    editTasks(task);
+  }
+});
