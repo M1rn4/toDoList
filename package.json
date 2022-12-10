@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/storres20/webpack.git"
+    "url": "git+https://github.com/M1rn4/toDoList.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/storres20/webpack/issues"
+    "url": "https://github.com/M1rn4/toDoList/issues"
   },
-  "homepage": "https://github.com/storres20/webpack#readme",
+  "homepage": "https://github.com/M1rn4/toDoList#readme",
   "devDependencies": {
     "@babel/core": "^7.19.6",
     "@babel/preset-env": "^7.19.4",
