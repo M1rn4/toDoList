@@ -47,6 +47,11 @@ const addList = () => {
     localStorage.setItem('tasks', JSON.stringify([]));
   }
   tasks = JSON.parse(localStorage.getItem('tasks'));
+  if (newDest.value === '') {
+    // eslint-disable-next-line no-alert
+    window.alert('can not save, empty value');
+    return;
+  }
   addNew(newDest.value, tasks);
 };
 
@@ -73,6 +78,11 @@ const editTask = (array) => {
   taskItem = parseInt(taskItem, 10);
   const ele = tasks.findIndex((e) => e.index + 1 === taskItem);
   const taskName = document.getElementById(taskItem);
+  if (taskName.value === '') {
+    // eslint-disable-next-line no-alert
+    window.alert('can not save, empty value');
+    return;
+  }
   tasks[ele].description = taskName.value;
   localStorage.setItem('tasks', JSON.stringify(tasks));
 };
