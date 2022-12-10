@@ -75,10 +75,9 @@ button {
 .squareT {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   padding-left: 1rem;
   padding-right: 2rem;
-  width: max-content;
+  justify-content: space-between;
 }
 
 .square ul {
