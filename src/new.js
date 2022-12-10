@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-unused-vars */
 const newDest = document.querySelector('.newToDo');
 const addTask = document.querySelector('.addTask');
 
@@ -13,7 +15,7 @@ const showList = (array) => {
             class="checkbox" 
             name="checkbox" 
             id="checkbox" ></li>
-            <input type="text" class="task-description" name="${array.description}" id="${array.index + 1}" value="${array.description}">
+            <input type="text" class="task-description" name="${array.description}" id="${array.index}" value="${array.description}">
         </ul>
       </div>
 
@@ -50,19 +52,18 @@ const addList = () => {
   addNew(newDest.value, tasks);
 };
 
-const deleteOne = (array) => {
+function deleteOne(array) {
   let taskName = array.children[0].children[0].children[1].id;
   taskName = parseInt(taskName, 10);
   const tasks = JSON.parse(localStorage.getItem('tasks'));
   const ele = tasks.findIndex((e) => e.index === taskName);
   tasks.splice(ele - 1, 1);
-  tasks.forEach((e) => {
-    if (ele < e.index) {
-      e.index -= 1;
-    }
-  });
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < tasks.length; i++) {
+    tasks[i].index = i + 1;
+  }
   localStorage.setItem('tasks', JSON.stringify(tasks));
-};
+}
 const showALl = () => {
   const tasks = JSON.parse(localStorage.getItem('tasks'));
   addTask.innerHTML = '';
@@ -70,6 +71,15 @@ const showALl = () => {
     const listItem = showList(e);
     addTask.insertAdjacentHTML('beforeend', listItem);
   });
+  const completedTasksIndex = tasks.filter((task) => task.completed === true);
+  for (let i = 0; i < completedTasksIndex.length; i += 1) {
+    for (let j = 0; j < (addTask.children).length; j += 1) {
+      if (j === (completedTasksIndex[i].index - 1)) {
+        // eslint-disable-next-line no-undef, max-len
+        addTask.children[j].children[0].children[0].children[0].children[0].checked = true;
+      }
+    }
+  }
 };
 
 const editTask = (array) => {

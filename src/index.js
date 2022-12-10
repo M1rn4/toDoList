@@ -4,8 +4,10 @@ import './imgs/bg1.png';
 import {
   addList, deleteOne, showALl, editTask, newDest, addTask,
 } from './new.js';
+import updateTaskStatus from './statusUpdate.js';
 
 const addBtn = document.querySelector('.add_button');
+const btnClear = document.querySelector('.remove_button');
 
 function addBtnN() {
   addList();
@@ -28,4 +30,18 @@ addTask.addEventListener('click', (e) => {
   if (e.target.classList.contains('edit')) {
     editTasks(task);
   }
+  if (e.target.classList.contains('checkbox')) {
+    // const tasks = JSON.parse(localStorage.getItem('tasks'));
+    updateTaskStatus(e.target, task);
+  }
+});
+btnClear.addEventListener('click', () => {
+  const tasks = JSON.parse(localStorage.getItem('tasks'));
+  const filterTasks = tasks.filter((task) => task.completed === false);
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < filterTasks.length; i++) {
+    filterTasks[i].index = i + 1;
+  }
+  localStorage.setItem('tasks', JSON.stringify(filterTasks));
+  showALl();
 });
