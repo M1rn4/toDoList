@@ -23,7 +23,9 @@ window.addEventListener('load', () => {
 addBtn.addEventListener('click', addBtnN);
 addTask.addEventListener('click', (e) => {
   const task = e.target.parentElement.parentElement;
+  console.log(e.target);
   if (e.target.classList.contains('del')) {
+    console.log('hi');
     deleteOne(task, e.target);
     showALl();
   }

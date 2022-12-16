@@ -45,8 +45,6 @@ const addList = () => {
   }
   tasks = JSON.parse(localStorage.getItem('tasks'));
   if (newDest.value === '') {
-    // eslint-disable-next-line no-alert
-    window.alert('can not save, empty value');
     return;
   }
   addNew(newDest.value, tasks);
@@ -89,8 +87,6 @@ const editTask = (array) => {
   const ele = tasks.findIndex((e) => e.index + 1 === taskItem);
   const taskName = document.getElementById(taskItem);
   if (taskName.value === '') {
-    // eslint-disable-next-line no-alert
-    window.alert('can not save, empty value');
     return;
   }
   tasks[ele].description = taskName.value;
