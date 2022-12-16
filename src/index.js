@@ -25,8 +25,6 @@ addBtn.addEventListener('click', addBtnN);
 addTask.addEventListener('click', (e) => {
   const task = e.target.parentElement.parentElement;
   if (e.target.classList.contains('del')) {
-    // eslint-disable-next-line no-console
-    console.log('hi');
     deleteOne(task, e.target);
     showALl();
   }
